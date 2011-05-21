@@ -3,6 +3,14 @@
 //
 /*********************************************************
 Author: Gavin
+Date: 05/21/2011
+Version: 1.0.0.2
+History: 1.Fixed the Set Scrollbar Position initial value is not synchronize with "m_PerValue" value.
+Known Issue: None
+***********************************************************/
+
+/*********************************************************
+Author: Gavin
 Date: 04/24/2011
 Version: 1.0.0.1
 History: Initial release
@@ -162,7 +170,8 @@ BOOL CImgConverterDlg::OnInitDialog()
 
 	CScrollBar* pScrollBar1 = (CScrollBar*)GetDlgItem(IDC_SCROLLBAR_PER);
 	pScrollBar1->SetScrollRange(0, 100, TRUE);
-	pScrollBar1->SetScrollPos(80);
+	//Ver1.0.0.2 pScrollBar1->SetScrollPos(80);
+	pScrollBar1->SetScrollPos(76);	//Ver1.0.0.2
 	pScrollBar1->EnableWindow(FALSE);
 
 	((CEdit *)GetDlgItem(IDC_EDIT_PER))->EnableWindow(FALSE);
