@@ -3,6 +3,14 @@
 //
 /*********************************************************
 Author: Gavin
+Date: 06/04/2011
+Version: 1.0.0.3
+History: 1.Add a option for user to control the utility is in the top or not.
+Known Issue: None
+***********************************************************/
+
+/*********************************************************
+Author: Gavin
 Date: 05/21/2011
 Version: 1.0.0.2
 History: 1.Fixed the Set Scrollbar Position initial value is not synchronize with "m_PerValue" value.
@@ -100,6 +108,7 @@ BEGIN_MESSAGE_MAP(CImgConverterDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_ABOUT, &CImgConverterDlg::OnBnClickedButtonAbout)
 	ON_WM_NCHITTEST()
 	ON_BN_CLICKED(IDC_BUTTON_SINGLE, &CImgConverterDlg::OnBnClickedButtonSingle)
+	ON_BN_CLICKED(IDC_CHECK_TOP, &CImgConverterDlg::OnBnClickedCheckTop)
 END_MESSAGE_MAP()
 
 
@@ -141,7 +150,7 @@ BOOL CImgConverterDlg::OnInitDialog()
 		OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, _T("Arial"));
 	GetDlgItem(IDC_STATIC_TITLE)->SetFont(font);
 
-	SetWindowPos(&wndTopMost, 0, 0, 0, 0, SWP_FRAMECHANGED|SWP_NOSIZE|SWP_NOMOVE);
+	//Ver1.0.0.3 SetWindowPos(&wndTopMost, 0, 0, 0, 0, SWP_FRAMECHANGED|SWP_NOSIZE|SWP_NOMOVE);
 
 	// Set WS_EX_LAYERED on this window 
 	SetWindowLong(GetSafeHwnd(), 
@@ -831,3 +840,18 @@ void CImgConverterDlg::OnBnClickedButtonSingle()
 		((CEdit *)GetDlgItem(IDC_EDIT_SINGLE))->SetWindowTextW(fileDlg.GetPathName());
 	}
 }
+
+//Ver1.0.0.3{
+void CImgConverterDlg::OnBnClickedCheckTop()
+{
+	// TODO: Add your control notification handler code here
+	if (((CButton*)GetDlgItem(IDC_CHECK_TOP))->GetCheck())
+	{
+		SetWindowPos(&CWnd::wndTopMost, 0, 0, 0, 0, SWP_FRAMECHANGED|SWP_NOSIZE|SWP_NOMOVE);
+	}
+	else
+	{
+		SetWindowPos(&CWnd::wndNoTopMost, 0, 0, 0, 0, SWP_FRAMECHANGED|SWP_NOSIZE|SWP_NOMOVE);
+	}
+}
+//Ver1.0.0.3

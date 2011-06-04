@@ -46,4 +46,5 @@ public:
 	BOOL CImgConverterDlg::PreTranslateMessage(MSG* pMsg);
 	afx_msg LRESULT OnNcHitTest(CPoint point);
 	afx_msg void OnBnClickedButtonSingle();
+	afx_msg void OnBnClickedCheckTop();
 };
